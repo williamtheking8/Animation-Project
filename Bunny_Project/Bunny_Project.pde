@@ -6,14 +6,14 @@
 // mouseX  ,mouseY ---coordinates for your mouse
 
 //VARIABLES
-int b1,b2,b3,h0,h1,h2,h3,h4,h5,h6,h7,h8,cld1,cld2,cld3,cld4,hs1;
-  
+int b1,b2,b3; //big hills
+int cld;  //clouds
+int h0,h1,h2,h3,h4,h5,h6,h7,h8,hs1; //bushes / little hills
+int bunny; //bunny                                            (:^/) <---- face
 void setup()  { // ~~~~~~Start of Setup ~~~~~
  size(800,600);
  //initialize clouds
- cld1 = -25;
- cld2 = 0;
- cld4 = 25;
+ cld = 25;
  //initialize hills
  b1 = 0;
  b2 = 400;
@@ -31,6 +31,10 @@ void setup()  { // ~~~~~~Start of Setup ~~~~~
  h8 = 850;
  
  hs1 = 100;
+ 
+ //initialize bunny
+ 
+ bunny = 400;
 } //~~~~~end of setup~~~~~
 
 void draw() {// ~~~~~~~ Start of Draw ~~~~~~~~
@@ -40,24 +44,20 @@ void draw() {// ~~~~~~~ Start of Draw ~~~~~~~~
   //clouds
   stroke(255,255,255);
   fill(255,255,255);
-  ellipse(cld1,100,50,50);
-  ellipse(cld2,100,50,50);
-  ellipse(cld2,65,50,50);
-  ellipse(cld4,100,50,50);
+  ellipse(cld,100,50,50);
+  ellipse(cld+25,100,50,50);
+  ellipse(cld+25,65,50,50);
+  ellipse(cld+50,100,50,50);
   
   //cloud movement
-  cld1 = cld1 + 1;
-  cld2 = cld2 + 1;
-  cld4 = cld4 + 1;
+  cld = cld + 1;
+  
   
   //cloud loop
-  if(cld1 > 825);
-    cld1 = -25;
-  if(cld2 > 825);
-    cld2 = -25;
-  if(cld4 > 825);
-    cld4 = -25;
-    
+  if(cld > 825){
+    cld = -25;
+  }
+ 
   //hills
   stroke(0,0,0);
   fill(0,255,100);
@@ -136,4 +136,24 @@ void draw() {// ~~~~~~~ Start of Draw ~~~~~~~~
   
   fill(255,240,70);
   rect(0,400,800,200);
+  
+  //Bunny
+  strokeWeight(1);
+  fill(255,255,255);
+  ellipse(bunny,450,200,200); //BODY
+  ellipse(bunny-50,350,50,130); //left ear
+  ellipse(bunny+50,350,50,130); //right ear
+  fill(0,0,0);
+  stroke(255,255,255);
+  ellipse(bunny-40,450,30,30); //left eye
+  ellipse(bunny+40,450,30,30); //right eye
+  fill(255,255,255);
+  ellipse(bunny-49,444,11,11); //left eye shimmer? thingy
+  ellipse(bunny+49,444,11,11); //right eye shimmer? thingy
+  //Bunny loop
+  bunny = bunny + 10;
+  
+  if (bunny > 900){
+     bunny = -300;
+  }
 } //~~~~~~~~ end of draw ~~~~~~~
